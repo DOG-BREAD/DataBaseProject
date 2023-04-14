@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e269f095-e63b-438d-9403-9338198c32ce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/aiblacklist.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dones.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
