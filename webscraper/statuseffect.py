@@ -36,6 +36,7 @@ for x in range (0, len(tableBody)-1):
                         conData = conData.replace('\r', '')
                         if(c==''):
                             continue
+
                         print(c)
                     continue
 
@@ -43,6 +44,8 @@ for x in range (0, len(tableBody)-1):
             conData = conData.replace('\n','')
             conData = conData.replace('\r', '')
             conData = conData.strip()
+            if (1==(conData.find("Survivors of the Void"))):
+                continue
             if (conData == ''):
                 continue
             print(conData)
