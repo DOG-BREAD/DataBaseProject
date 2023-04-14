@@ -23,7 +23,8 @@ tableBody = soup.find_all("tbody")
 for eachTableBody in range(1, len(tableBody)-1):
 
     tableRow = tableBody[eachTableBody].find_all("tr")
-
+    if(eachTableBody >= 6 ):
+        print("--------------------------------------" + " passive ")
     for eachRow in range(1,len(tableRow)):
         tableData= tableRow[eachRow].find_all("td")
         itemName = tableData[0]['data-sort-value']
@@ -37,6 +38,7 @@ for eachTableBody in range(1, len(tableBody)-1):
         itemStack = re.sub(r'\n','',tableData[2].get_text())
         print(itemStack)
         counter+=1
+
 
 
     print(counter)
