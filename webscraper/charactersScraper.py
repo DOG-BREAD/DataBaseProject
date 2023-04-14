@@ -12,13 +12,17 @@ import requests
 import base64
 import re
 import mysql.connector
+import dotenv
+import os
+
+dotenv.load_dotenv()
 
 # Create the mysql.connector cursor to access the DB
 mydb = mysql.connector.connect(
-  host="localhost",
-  user="testUser",
-  password="$$ilovedatabases$$",
-  database="ror_test"
+    host= os.getenv("host"),
+    user= os.getenv("user"),
+    password= os.getenv("password"),
+    database= os.getenv("database")
 )
 mycursor = mydb.cursor()
 
@@ -76,11 +80,19 @@ for x in range(1, len(tableRow)):
     MvmtSpeed = characterMovementSpeed.split()
     MvmtSpeed = MvmtSpeed[0]
     Level = 0
+    
+    # insert into Playable_Characters table & Characters table
 
-
+    # attributes for playable_Characters: CharName, Mass, Dmg_Scalar, Health_Scalar, HealthRegen_Scalar
+    sql = "INSERT INTO characters (Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    val = (int(characterArmor), int(BaseDamage), int(BaseHealth), characterName, Level, float(Health_Regen), characterClass, characterPicture, float(MvmtSpeed))
+    mycursor.execute(sql, val)
+    
     # attributes for Characters: Armor, BaseDamage, BaseHealth, charactersName, Health_Regen, Class, Icon, MvmtSpeed
-    # attributes for playable_Characters: CharName, Mass, Dmg_Scalar, Health_Scalar, HealthRegen_Scalar     
-    # TODO: ask about MvmtSpeed_Scalar. Where are we grabbing this? ALSO manually insert Outfit_color
+    sql2 = "INSERT INTO playable_characters (CharName, Mass, Dmg_Scalar, MvmtSpeed_scalar) VALUES (%s, %s, %s, %s)"
+    val2 = (characterName, int(characterMass), float(Dmg_Scalar), float(MvmtSpeed))
+    mycursor.execute(sql2, val2)
+     
     
     # Scrape each Survivor's individual page to grab skills for the skills table
     # attributes for skills table: cName, sName, icon, Cooldown, Descr, skillType, proc_coefficient
@@ -93,33 +105,34 @@ for x in range(1, len(tableRow)):
     divs = soup.find_all('div', {'class':'skillbox'})
     for div in divs:
         tables = div.find_all('table', {'class':'article-table skill'})
-        
+        for y in tables:
+            sName = y.find('span', {'class':'mw-headline'}).text
+            icon = y.find('th', {'class':'skillimage'}).a['href'] 
+            
+            tableRows = y.find_all('tr')
+            # -2 because we don't care about the last two rows (Notes)
+            # initalize Cooldown & ProcCoef since not every skill has one
+            for j in range(2, len(tableRows)-2):
+                Cooldown = "0"
+                ProcCoef = "0"
+                descr = ""
+                val = tableRows[j].th.text
 
-    """
-    divs = soup.find_all('div', {'class':'skillbox'})
-    for div in divs:
-        tables = div.find_all('table')
-        for x in tables:
-            trs = x.find_all("tr")
-            sName = trs[0].text.replace("\n","")
-            icon = trs[1].a['href']
-            Type = trs[2].td.text.replace("\n","")
-            # Survivors skills tables are laid out different here down 
-            # cooldown
-            # proc coefficient
-            # descr 
-    """
+                if val == "Type\n":
+                    Type = tableRows[j].td.text
+                elif val == "Description\n":
+                    descr = tableRows[j].td.text
+                    #print("descr = ", descr)
+                elif val == "Cooldown\n":
+                    Cooldown = tableRows[j].td.text.replace("s","").strip()
 
-    
-    # insert into Playable_Characters table & Characters table
-    sql = "INSERT INTO characters (Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    val = (int(characterArmor), int(BaseDamage), int(BaseHealth), characterName, Level, float(Health_Regen), characterClass, characterPicture, float(MvmtSpeed))
-    mycursor.execute(sql, val)
-    
-    sql2 = "INSERT INTO playable_characters (CharName, Mass, Dmg_Scalar) VALUES (%s, %s, %s)"
-    val2 = (characterName, int(characterMass), float(Dmg_Scalar))
-    mycursor.execute(sql2, val2)
-    
+                else:
+                    ProcCoef = tableRows[j].td.text
+            # attributes for skills table: cName, sName, icon, Cooldown, Descr, skillType, proc_coefficient
+            sql3 = "INSERT INTO skills (cName, sName, icon, Cooldown, Description, Type, proc_coefficient) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            val3 = (characterName, sName, icon, float(Cooldown), descr, Type, float(ProcCoef))
+            mycursor.execute(sql3, val3)
+
 
     
     mydb.commit()
