@@ -17,17 +17,15 @@ html_text = requests.get("https://riskofrain2.fandom.com/wiki/Status_Effects").t
 soup = BeautifulSoup(html_text, "lxml")
 
 tableBody = soup.find_all("tbody")
-tableRow = tableBody[1].find_all("tr")
-tableData =tableRow[1].get_text()
-print(tableData)
 
-#for x in range(1, len(tableRow)):
 
-   # tableData = tableRow[x].find_all("td")
-    #artifactName = tableData[0].get_text()
-    #print(artifactName)
-    #artifactDescription = tableData[1].get_text()
-    #print(artifactDescription)
-    #artifactCode = tableData[2].get_text()
-    #print(artifactCode)
-    #print(tableBody[0])
+for x in range (0, len(tableBody)-1):
+    tableRow = tableBody[x].find_all("tr")
+
+    for y in range(0, len(tableRow)):
+        tableData =tableRow[y].find_all("td")
+
+        for z in range(0,len(tableData)):
+            conData = tableData[z].get_text()
+            print(conData)
+
