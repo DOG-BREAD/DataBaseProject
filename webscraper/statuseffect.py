@@ -26,6 +26,24 @@ for x in range (0, len(tableBody)-1):
         tableData =tableRow[y].find_all("td")
 
         for z in range(0,len(tableData)):
-            conData = tableData[z].get_text()
+            if(z==3):
+                a=tableData[z].find_all("a")
+                if(len(a)>1):
+                    for b in range(1,len(a)):
+                        c=a[b].get_text()
+                        c=c.strip()
+                        c=c.replace('\n','')
+                        conData = conData.replace('\r', '')
+                        if(c==''):
+                            continue
+                        print(c)
+                    continue
+
+            conData = tableData[z].get_text("")
+            conData = conData.replace('\n','')
+            conData = conData.replace('\r', '')
+            conData = conData.strip()
+            if (conData == ''):
+                continue
             print(conData)
 
