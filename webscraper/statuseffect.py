@@ -33,10 +33,11 @@ for x in range (0, len(tableBody)-1):
                         c=a[b].get_text()
                         c=c.strip()
                         c=c.replace('\n','')
-                        conData = conData.replace('\r', '')
+                        c = c.replace('\r', '')
                         if(c==''):
                             continue
-
+                        if (1 == (c.find("Survivors of the Void"))):
+                            continue
                         print(c)
                     continue
 
