@@ -1,0 +1,13 @@
+.mainbody{
+     background-image: url('https://c4.wallpaperflare.com/wallpaper/387/95/786/risk-of-rain-video-game-art-purple-hd-wallpaper-preview.jpg');
+     background-size: cover;
+     background-repeat: no-repeat;
+}
+
+.optionsBar{
+    background-color: #808080;
+}
+
+.topRow{
+    opacity: .5;
+}
