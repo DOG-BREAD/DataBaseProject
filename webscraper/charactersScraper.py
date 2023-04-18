@@ -79,16 +79,16 @@ for x in range(1, len(tableRow)):
     # remove units from MvmtSpeed
     MvmtSpeed = characterMovementSpeed.split()
     MvmtSpeed = MvmtSpeed[0]
-    Level = 0
+    Level = 1
     
     # insert into Playable_Characters table & Characters table
 
-    # attributes for playable_Characters: CharName, Mass, Dmg_Scalar, Health_Scalar, HealthRegen_Scalar
+    # attributes for Characters: Armor, BaseDamage, BaseHealth, charactersName, Health_Regen, Class, Icon, MvmtSpeed
     sql = "INSERT INTO characters (Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
     val = (int(characterArmor), int(BaseDamage), int(BaseHealth), characterName, Level, float(Health_Regen), characterClass, characterPicture, float(MvmtSpeed))
     mycursor.execute(sql, val)
     
-    # attributes for Characters: Armor, BaseDamage, BaseHealth, charactersName, Health_Regen, Class, Icon, MvmtSpeed
+    # attributes for playable_Characters: CharName, Mass, Dmg_Scalar, Health_Scalar, HealthRegen_Scalar
     sql2 = "INSERT INTO playable_characters (CharName, Mass, Dmg_Scalar, MvmtSpeed_scalar) VALUES (%s, %s, %s, %s)"
     val2 = (characterName, int(characterMass), float(Dmg_Scalar), float(MvmtSpeed))
     mycursor.execute(sql2, val2)
@@ -112,10 +112,11 @@ for x in range(1, len(tableRow)):
             tableRows = y.find_all('tr')
             # -2 because we don't care about the last two rows (Notes)
             # initalize Cooldown & ProcCoef since not every skill has one
+            Cooldown = "N/A"
+            ProcCoef = "N/A"
+            descr = "N/A"
+            # TODO: Change this logic to check all the rotes and discard the Notes. Note: Not all skillboxes end with a Notes section
             for j in range(2, len(tableRows)-2):
-                Cooldown = "0"
-                ProcCoef = "0"
-                descr = ""
                 val = tableRows[j].th.text
 
                 if val == "Type\n":
@@ -124,13 +125,13 @@ for x in range(1, len(tableRow)):
                     descr = tableRows[j].td.text
                     #print("descr = ", descr)
                 elif val == "Cooldown\n":
-                    Cooldown = tableRows[j].td.text.replace("s","").strip()
-
+                    Cooldown = tableRows[j].td.text
                 else:
                     ProcCoef = tableRows[j].td.text
+                    
             # attributes for skills table: cName, sName, icon, Cooldown, Descr, skillType, proc_coefficient
             sql3 = "INSERT INTO skills (cName, sName, icon, Cooldown, Description, Type, proc_coefficient) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-            val3 = (characterName, sName, icon, float(Cooldown), descr, Type, float(ProcCoef))
+            val3 = (characterName, sName, icon, Cooldown, descr, Type, ProcCoef)
             mycursor.execute(sql3, val3)
 
 
