@@ -9,6 +9,7 @@ import re
 html_text = requests.get("https://riskofrain2.fandom.com/wiki/Category:AIBlacklist_Items").text
 soup = BeautifulSoup(html_text, "lxml")
 
+aiBlacklistString=""
 list = soup.find_all("ul")
 print(len(list))
 for x in range(10,24):
@@ -16,4 +17,7 @@ for x in range(10,24):
 
     for y in range (0, len(a)):
         d = a[y].get_text()
-        print(d)
+        aiBlacklistString+= d
+
+#string , space seperated , all ai blacklist items
+print(aiBlacklistString)
