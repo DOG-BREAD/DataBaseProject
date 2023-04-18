@@ -21,5 +21,16 @@ for x in range (0, len(drones)):
     print(nam[0].get_text())
     tableRow = tableBody[0].find_all("td")
 
-    for x in range(2, len(tableRow), 2):
-        print(tableRow[x].get_text())
+    #for x in range(2, len(tableRow), 2):
+     #   print(tableRow[x].get_text())
+
+    #health
+    print(tableRow[2].get_text())
+    #health regen
+    print(tableRow[4].get_text())
+    #move
+    print(tableRow[6].get_text())
+    #speed
+    print(tableRow[8].get_text())
+    #armor
+    print(tableRow[10].get_text())
