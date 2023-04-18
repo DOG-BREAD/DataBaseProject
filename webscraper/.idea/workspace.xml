@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e269f095-e63b-438d-9403-9338198c32ce" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/aiblacklist.py" beforeDir="false" afterPath="$PROJECT_DIR$/aiblacklist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/webscraper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

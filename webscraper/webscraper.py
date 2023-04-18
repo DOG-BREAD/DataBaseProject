@@ -25,6 +25,23 @@ for eachTableBody in range(1, len(tableBody)-1):
     tableRow = tableBody[eachTableBody].find_all("tr")
     if(eachTableBody >= 6 ):
         print("--------------------------------------" + " passive ")
+        for eachRow in range(1, len(tableRow)):
+            tableData = tableRow[eachRow].find_all("td")
+            itemName = tableData[0]['data-sort-value']
+            print(itemName)  # prints name atm
+            tableRowImageName = tableData[0].find("img")['alt']
+            tableRowImageSource = tableData[0].find("img")['data-src']
+            print(tableRowImageName)
+            print((tableRowImageSource))
+            itemDescription = re.sub(r'\n', '', tableData[1].get_text())  # returns all the human readable text
+            print(itemDescription)
+            itemStack = re.sub(r'\n', '', tableData[2].get_text())
+            print(itemStack)
+            counter += 1
+
+            #add passive sql connector here
+        continue
+
     for eachRow in range(1,len(tableRow)):
         tableData= tableRow[eachRow].find_all("td")
         itemName = tableData[0]['data-sort-value']
@@ -39,6 +56,7 @@ for eachTableBody in range(1, len(tableBody)-1):
         print(itemStack)
         counter+=1
 
+        #add active sql connector here
 
 
     print(counter)
