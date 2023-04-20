@@ -11,13 +11,15 @@ soup = BeautifulSoup(html_text, "lxml")
 
 aiBlacklistString=""
 list = soup.find_all("ul")
-print(len(list))
+
 for x in range(10,24):
     a= list[x].find_all("li")
 
     for y in range (0, len(a)):
         d = a[y].get_text()
+
         aiBlacklistString+= d
+        aiBlacklistString+= ","
 
 #string , space seperated , all ai blacklist items
 print(aiBlacklistString)
