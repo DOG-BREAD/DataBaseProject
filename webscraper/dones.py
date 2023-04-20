@@ -1,3 +1,6 @@
+# @date 4/18/2023
+# @author:  Josh Priest, Samuel Jacobs
+
 from bs4 import BeautifulSoup
 import requests
 import base64

@@ -2,7 +2,7 @@
 """
 Created on Thu Feb  4 00:57:55 2023
 
-@author: Samuel Jacobs
+@author: Samuel Jacobs & Josh Priest
 """
 
 from bs4 import BeautifulSoup
@@ -106,41 +106,3 @@ for x in tables:    # for each table
 mydb.commit()
 mycursor.close() 
 mydb.close()
-
-
-"""
-tableBody = soup.find_all("tbody")
-for x in range (0, len(tableBody)-1):
-    tableRow = tableBody[x].find_all("tr")
-
-    for y in range(0, len(tableRow)):
-        tableData =tableRow[y].find_all("td")
-
-        for z in range(0,len(tableData)):
-            if(z==3):
-                a=tableData[z].find_all("a")
-                if(len(a)>1):
-                    for b in range(1,len(a)):
-                        c=a[b].get_text()
-                        c=c.strip()
-                        c=c.replace('\n','')
-                        c = c.replace('\r', '')
-                        if(c==''):
-                            continue
-                        if (1 == (c.find("Survivors of the Void"))):
-                            continue
-                        print(c)
-                    continue
-
-            conData = tableData[z].get_text("")
-            conData = conData.replace('\n','')
-            conData = conData.replace('\r', '')
-            conData = conData.strip()
-            if (1==(conData.find("Survivors of the Void"))):
-                continue
-            if (conData == ''):
-                continue
-            print(conData)
-            print("==========================================================================")
-"""
-
