@@ -18,7 +18,6 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-
 """ html text sends a get requiest to the url which would send back a status code , add the '.text' to get the page back in text format """
 html_text = requests.get("https://riskofrain2.fandom.com/wiki/Category:AIBlacklist_Items").text
 soup = BeautifulSoup(html_text, "lxml")
@@ -39,9 +38,6 @@ for x in range(10,24):
         d = a[y].get_text()
         list_of_items.append(d)
 
-        aiBlacklistString+= d
-        aiBlacklistString+= ","
-
 for name in names:
     for item in list_of_items:
         
@@ -55,6 +51,3 @@ for name in names:
 mydb.commit()
 mycursor.close() 
 mydb.close()
-    
-#string , space seperated , all ai blacklist items
-#print(aiBlacklistString)
