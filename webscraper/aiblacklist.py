@@ -2,6 +2,20 @@ from bs4 import BeautifulSoup
 import requests
 import base64
 import re
+import mysql.connector
+import dotenv
+import os
+
+dotenv.load_dotenv()
+
+# Create the mysql.connector cursor to access the DB
+mydb = mysql.connector.connect(
+    host= os.getenv("host"),
+    user= os.getenv("user"),
+    password= os.getenv("password"),
+    database= os.getenv("database")
+)
+mycursor = mydb.cursor()
 
 
 
@@ -12,14 +26,35 @@ soup = BeautifulSoup(html_text, "lxml")
 aiBlacklistString=""
 list = soup.find_all("ul")
 
+sql = "select charName from unplayable_characters"
+mycursor.execute(sql)
+results = mycursor.fetchall()
+names = [result[0] for result in results]
+    
+list_of_items = []
 for x in range(10,24):
     a= list[x].find_all("li")
 
     for y in range (0, len(a)):
         d = a[y].get_text()
+        list_of_items.append(d)
 
         aiBlacklistString+= d
         aiBlacklistString+= ","
 
+for name in names:
+    for item in list_of_items:
+        
+        # insert pair into AiBlacklist table
+        sql2 = "INSERT INTO AiBlacklist (charactersName, AIBlacklist) VALUES (%s, %s)"
+        val2 = (name, item)
+        mycursor.execute(sql2, val2)
+        print(f"(name, pair) ", name, item)
+
+
+mydb.commit()
+mycursor.close() 
+mydb.close()
+    
 #string , space seperated , all ai blacklist items
-print(aiBlacklistString)
+#print(aiBlacklistString)
