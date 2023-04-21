@@ -70,7 +70,7 @@ for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, I
 
             EliteOthercharactersName = "Other " + eliteType + charactersName
             sql = "INSERT INTO characters (Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            val = (int(Armor), int(BaseDamage), int(BaseHealth), charactersName, Level, float(Health_Regen), Class, Icon,
+            val = (int(Armor), int(BaseDamage), int(BaseHealth), EliteOthercharactersName, Level, float(Health_Regen), Class, Icon,
                float(MvmtSpeed))
             mycursor.execute(sql, val)
 
