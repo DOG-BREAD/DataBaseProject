@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e269f095-e63b-438d-9403-9338198c32ce" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enumeration.py" beforeDir="false" afterPath="$PROJECT_DIR$/enumeration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
