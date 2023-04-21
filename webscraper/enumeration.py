@@ -13,7 +13,7 @@ mydb = mysql.connector.connect(
 )
 mycursor = mydb.cursor()
 
-sql = "SELECT CharName FROM playable_characters (NAME) VALUES (%s)"
+sql = "SELECT CharName FROM playable_characters"
 #val = (int(characterArmor), int(BaseDamage), int(BaseHealth), characterName, Level, float(Health_Regen), characterClass, characterPicture, float(MvmtSpeed))
 mycursor.execute(sql)
 
@@ -21,7 +21,7 @@ listofnames=[]
 for(NAME) in mycursor:
     listofnames+= NAME
 
-sql = "SELECT charactersName FROM drone (NAME) VALUES (%s)"
+sql = "SELECT charactersName FROM drone"
 #val = (int(characterArmor), int(BaseDamage), int(BaseHealth), characterName, Level, float(Health_Regen), characterClass, characterPicture, float(MvmtSpeed))
 mycursor.execute(sql)
 
