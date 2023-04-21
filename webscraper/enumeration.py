@@ -21,6 +21,14 @@ listofnames=[]
 for(NAME) in mycursor:
     listofnames+= NAME
 
+sql = "SELECT charactersName FROM drone (NAME) VALUES (%s)"
+#val = (int(characterArmor), int(BaseDamage), int(BaseHealth), characterName, Level, float(Health_Regen), characterClass, characterPicture, float(MvmtSpeed))
+mycursor.execute(sql)
+
+listofnames=[]
+for(NAME) in mycursor:
+    listofnames+= NAME
+
 #insert into DB
 # attributes for Characters: Armor, BaseDamage, BaseHealth, charactersName, Health_Regen, Class, Icon, MvmtSpeed
 sql = "SELECT * FROM characters (Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
@@ -32,17 +40,20 @@ for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, I
     if(charactersName in listofnames ):
         continue
     else:
-        charactersName = "Other " + charactersName
+        othercharactersName = "Other " + charactersName
         sql = "INSERT INTO characters (Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        val = (int(Armor), int(BaseDamage), int(BaseHealth), charactersName, Level, float(Health_Regen), Class, Icon,
+        val = (int(Armor), int(BaseDamage), int(BaseHealth), othercharactersName, Level, float(Health_Regen), Class, Icon,
                float(MvmtSpeed))
         mycursor.execute(sql, val)
 
         # attributes for unplayable_characters: Constant_Speed, AI_Controlled, Additional_Damage, AI_Blacklist (leave null for manual input), charactersName
         sql2 = "INSERT INTO unplayable_characters (Constant_Speed, AI_Controlled, Additional_Damage, charName) VALUES (%s, %s, %s, %s)"
-        val2 = (float(MvmtSpeed), Class, float(0), charactersName)
+        val2 = (float(MvmtSpeed), Class, float(0), othercharactersName)
         mycursor.execute(sql2, val2)
 
+        #sql = "INSERT INTO enemies (charactersName, Family, SB_Flag, MAP_SPAWN_REQUIREMENTS, SM_FLAG, special_spawn_requirements, OM_Flag, survivar_ally, E_flag, Effect, damage_boost, health_boost, Chance_to_drop_buff ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        #val = (othercharactersName, Family=" ", SB_Flag, MAP_SPAWN_REQUIREMENTS, SM_FLAG, special_spawn_requirements, OM_Flag, survivar_ally, E_flag, Effect, damage_boost, health_boost, float(Chance_to_drop_buff) )
+        #mycursor.execute(sql, val)
         for eliteType in elite:
 
             charactersName = eliteType + charactersName
