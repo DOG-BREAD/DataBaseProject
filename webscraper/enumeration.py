@@ -35,6 +35,7 @@ sql = "SELECT * FROM characters "
 #val = (int(characterArmor), int(BaseDamage), int(BaseHealth), characterName, Level, float(Health_Regen), characterClass, characterPicture, float(MvmtSpeed))
 mycursor.execute(sql)
 result = mycursor.fetchall()
+#fetch all values from the cursor
 
 elite = ['Blazing ','Glacial ', 'Overloading ', 'Malachite ', 'Celestine ', 'Perfected ', 'Mending ', 'Voidtouched ']
 for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed) in result:
@@ -70,7 +71,7 @@ for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, I
 
             EliteOthercharactersName = "Other " + eliteType + charactersName
             sql = "INSERT INTO characters (Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            val = (int(Armor), int(BaseDamage), int(BaseHealth), charactersName, Level, float(Health_Regen), Class, Icon,
+            val = (int(Armor), int(BaseDamage), int(BaseHealth), EliteOthercharactersName, Level, float(Health_Regen), Class, Icon,
                float(MvmtSpeed))
             mycursor.execute(sql, val)
 
