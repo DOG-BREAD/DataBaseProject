@@ -1,3 +1,5 @@
+# authors: Samuel Jacobs, Josh Priest
+
 from bs4 import BeautifulSoup
 import requests
 import base64
@@ -25,7 +27,7 @@ soup = BeautifulSoup(html_text, "lxml")
 aiBlacklistString=""
 list = soup.find_all("ul")
 
-sql = "select charName from unplayable_characters"
+sql = "select charactersName from unplayable_characters"
 mycursor.execute(sql)
 results = mycursor.fetchall()
 names = [result[0] for result in results]

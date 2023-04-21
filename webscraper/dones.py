@@ -118,6 +118,9 @@ for x in range (0, len(drones)):
     if MovementSpeed.isalpha():
         MovementSpeed = 0
     
+
+    # 
+
     
 
     #insert into Drone table with charactersName == nam and charName "Acrid" as default. Will randomize playable characters names for charName
@@ -131,7 +134,7 @@ for x in range (0, len(drones)):
 
 
     # attributes for Unplayable_Characters: charName, Constant_speed, AI_Controlled, AI_Blacklist
-    sql2 = "INSERT INTO Unplayable_Characters (charName, Constant_speed, AI_Controlled) VALUES (%s, %s, %s)"
+    sql2 = "INSERT INTO Unplayable_Characters (charactersName, Constant_speed, AI_Controlled) VALUES (%s, %s, %s)"
     val2 = (item_name, float(MovementSpeed), "Drone")
     mycursor.execute(sql2, val2)
 

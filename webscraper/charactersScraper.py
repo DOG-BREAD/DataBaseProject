@@ -128,7 +128,9 @@ for x in range(1, len(tableRow)):
                     Cooldown = tableRows[j].td.text
                 else:
                     ProcCoef = tableRows[j].td.text
-                    
+                
+        
+                
             # attributes for skills table: cName, sName, icon, Cooldown, Descr, skillType, proc_coefficient
             sql3 = "INSERT INTO skills (cName, sName, icon, Cooldown, Description, Type, proc_coefficient) VALUES (%s, %s, %s, %s, %s, %s, %s)"
             val3 = (characterName, sName, icon, Cooldown, descr, Type, ProcCoef)
@@ -138,6 +140,7 @@ for x in range(1, len(tableRow)):
     
     mydb.commit()
 
+# write a function that adds two integers together and returns the sum
 
 
 mycursor.close() 

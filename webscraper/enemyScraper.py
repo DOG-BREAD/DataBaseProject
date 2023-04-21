@@ -72,7 +72,7 @@ for data in rows[1:]:
     mycursor.execute(sql, val)
 
     # attributes for unplayable_characters: Constant_Speed, AI_Controlled, Additional_Damage, AI_Blacklist (leave null for manual input), charactersName
-    sql2 = "INSERT INTO unplayable_characters (Constant_Speed, AI_Controlled, Additional_Damage, charName) VALUES (%s, %s, %s, %s)"
+    sql2 = "INSERT INTO unplayable_characters (Constant_Speed, AI_Controlled, Additional_Damage, charactersName) VALUES (%s, %s, %s, %s)"
     val2 = (float(MvmtSpeed), Class, float(Additional_Damage), characterName)
     mycursor.execute(sql2, val2)
 
