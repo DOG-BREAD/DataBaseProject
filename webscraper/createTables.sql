@@ -41,7 +41,7 @@ CREATE TABLE Unplayable_Characters(
 	Additional_Damage DOUBLE,	
 	AI_Blacklist VARCHAR(80),	
 	charactersName VARCHAR(80),	
-	FOREIGN KEY (charName) REFERENCES Characters(charactersName) 
+	FOREIGN KEY (charactersName) REFERENCES Characters(charactersName) 
 );
 
 create table Environment(
@@ -134,15 +134,15 @@ CREATE TABLE Drone(
 	charactersName VARCHAR(80),
 	charName varchar(80),
 	PRIMARY KEY(charactersName),
-	FOREIGN KEY(charactersName) REFERENCES Unplayable_Characters(charName),
-	FOREIGN KEY(charName) REFERENCES Playable_Characters(CharName)
+	FOREIGN KEY(charName) REFERENCES Unplayable_Characters(charName),
+	FOREIGN KEY(charactersName) REFERENCES Playable_Characters(CharName)
 );
 
 CREATE TABLE AIBlacklist(
 	charactersName varchar(200),
 	AIBlackList varchar(80),
 	PRIMARY KEY(charactersName, AIBlackList),
-	FOREIGN KEY (charactersName) REFERENCES unplayable_characters(charName)
+	FOREIGN KEY (charactersName) REFERENCES unplayable_characters(charactersName)
 );
 
 CREATE TABLE gives(

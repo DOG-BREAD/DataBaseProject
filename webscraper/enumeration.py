@@ -70,6 +70,7 @@ for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, I
             val2 = (float(MvmtSpeed), Class, float(0), ElitecharactersName)
             mycursor.execute(sql2, val2)
 
+
             # elite
             sql = "INSERT INTO enemies (charactersName, Family, SB_Flag, MAP_SPAWN_REQUIREMENTS, SM_FLAG, special_spawn_requirements, OM_Flag, survivar_ally, E_flag, Effect, damage_boost, health_boost, Chance_to_drop_buff ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
             val = (
