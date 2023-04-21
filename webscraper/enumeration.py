@@ -31,12 +31,13 @@ for(NAME) in mycursor:
 
 #insert into DB
 # attributes for Characters: Armor, BaseDamage, BaseHealth, charactersName, Health_Regen, Class, Icon, MvmtSpeed
-sql = "SELECT * FROM characters (Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+sql = "SELECT * FROM characters "
 #val = (int(characterArmor), int(BaseDamage), int(BaseHealth), characterName, Level, float(Health_Regen), characterClass, characterPicture, float(MvmtSpeed))
 mycursor.execute(sql)
+result = mycursor.fetchall()
 
 elite = ['Blazing ','Glacial ', 'Overloading ', 'Malachite ', 'Celestine ', 'Perfected ', 'Mending ', 'Voidtouched ']
-for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed) in mycursor:
+for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed) in result:
     if(charactersName in listofnames ):
         continue
     else:
@@ -47,7 +48,7 @@ for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, I
         mycursor.execute(sql, val)
 
         # attributes for unplayable_characters: Constant_Speed, AI_Controlled, Additional_Damage, AI_Blacklist (leave null for manual input), charactersName
-        sql2 = "INSERT INTO unplayable_characters (Constant_Speed, AI_Controlled, Additional_Damage, charName) VALUES (%s, %s, %s, %s)"
+        sql2 = "INSERT INTO unplayable_characters (Constant_Speed, AI_Controlled, Additional_Damage, charactersName) VALUES (%s, %s, %s, %s)"
         val2 = (float(MvmtSpeed), Class, float(0), othercharactersName)
         mycursor.execute(sql2, val2)
 
@@ -57,12 +58,13 @@ for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, I
         for eliteType in elite:
 
             charactersName = eliteType + charactersName
+            print(charactersName)
             sql = "INSERT INTO characters (Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
             val = (int(Armor), int(BaseDamage), int(BaseHealth), charactersName, Level, float(Health_Regen), Class, Icon, float(MvmtSpeed))
             mycursor.execute(sql, val)
 
             # attributes for unplayable_characters: Constant_Speed, AI_Controlled, Additional_Damage, AI_Blacklist (leave null for manual input), charactersName
-            sql2 = "INSERT INTO unplayable_characters (Constant_Speed, AI_Controlled, Additional_Damage, charName) VALUES (%s, %s, %s, %s)"
+            sql2 = "INSERT INTO unplayable_characters (Constant_Speed, AI_Controlled, Additional_Damage, charactersName) VALUES (%s, %s, %s, %s)"
             val2 = (float(MvmtSpeed), Class, float(0), charactersName)
             mycursor.execute(sql2, val2)
 
@@ -73,7 +75,7 @@ for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, I
             mycursor.execute(sql, val)
 
             # attributes for unplayable_characters: Constant_Speed, AI_Controlled, Additional_Damage, AI_Blacklist (leave null for manual input), charactersName
-            sql2 = "INSERT INTO unplayable_characters (Constant_Speed, AI_Controlled, Additional_Damage, charName) VALUES (%s, %s, %s, %s)"
+            sql2 = "INSERT INTO unplayable_characters (Constant_Speed, AI_Controlled, Additional_Damage, charactersName) VALUES (%s, %s, %s, %s)"
             val2 = (float(MvmtSpeed), Class, float(0), charactersName)
             mycursor.execute(sql2, val2)
 
