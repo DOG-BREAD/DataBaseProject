@@ -38,6 +38,11 @@ for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, I
                float(MvmtSpeed))
         mycursor.execute(sql, val)
 
+        # attributes for unplayable_characters: Constant_Speed, AI_Controlled, Additional_Damage, AI_Blacklist (leave null for manual input), charactersName
+        sql2 = "INSERT INTO unplayable_characters (Constant_Speed, AI_Controlled, Additional_Damage, charName) VALUES (%s, %s, %s, %s)"
+        val2 = (float(MvmtSpeed), Class, float(0), charactersName)
+        mycursor.execute(sql2, val2)
+
         for eliteType in elite:
 
             charactersName = eliteType + charactersName
@@ -45,13 +50,21 @@ for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, I
             val = (int(Armor), int(BaseDamage), int(BaseHealth), charactersName, Level, float(Health_Regen), Class, Icon, float(MvmtSpeed))
             mycursor.execute(sql, val)
 
+            # attributes for unplayable_characters: Constant_Speed, AI_Controlled, Additional_Damage, AI_Blacklist (leave null for manual input), charactersName
+            sql2 = "INSERT INTO unplayable_characters (Constant_Speed, AI_Controlled, Additional_Damage, charName) VALUES (%s, %s, %s, %s)"
+            val2 = (float(MvmtSpeed), Class, float(0), charactersName)
+            mycursor.execute(sql2, val2)
+
             charactersName = "Other " + eliteType + charactersName
             sql = "INSERT INTO characters (Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, Icon, MvmtSpeed ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
             val = (int(Armor), int(BaseDamage), int(BaseHealth), charactersName, Level, float(Health_Regen), Class, Icon,
                float(MvmtSpeed))
             mycursor.execute(sql, val)
 
-
+            # attributes for unplayable_characters: Constant_Speed, AI_Controlled, Additional_Damage, AI_Blacklist (leave null for manual input), charactersName
+            sql2 = "INSERT INTO unplayable_characters (Constant_Speed, AI_Controlled, Additional_Damage, charName) VALUES (%s, %s, %s, %s)"
+            val2 = (float(MvmtSpeed), Class, float(0), charactersName)
+            mycursor.execute(sql2, val2)
 
 print("Success!")
 mydb.commit()
