@@ -40,7 +40,7 @@ CREATE TABLE Unplayable_Characters(
 	AI_Controlled VARCHAR(80),	
 	Additional_Damage DOUBLE,	
 	AI_Blacklist VARCHAR(80),	
-	charName VARCHAR(80),	
+	charactersName VARCHAR(80),	
 	FOREIGN KEY (charName) REFERENCES Characters(charactersName) 
 );
 
