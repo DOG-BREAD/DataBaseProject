@@ -134,8 +134,8 @@ CREATE TABLE Drone(
 	charactersName VARCHAR(80),
 	charName varchar(80),
 	PRIMARY KEY(charactersName),
-	FOREIGN KEY(charName) REFERENCES Unplayable_Characters(charName),
-	FOREIGN KEY(charactersName) REFERENCES Playable_Characters(CharName)
+	FOREIGN KEY(charactersName) REFERENCES Unplayable_Characters(charactersName),
+	FOREIGN KEY(charName) REFERENCES Playable_Characters(CharName)
 );
 
 CREATE TABLE AIBlacklist(
