@@ -75,7 +75,7 @@ for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, I
             # elite
             sql = "INSERT INTO enemies (charactersName, Family, SB_Flag, MAP_SPAWN_REQUIREMENTS, SM_FLAG, special_spawn_requirements, OM_Flag, survivar_ally, E_flag, Effect, damage_boost, health_boost, Chance_to_drop_buff ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
             val = (
-            ElitecharactersName, "", False, "", False, "", False, "survivar_ally", True, str(elite[eliteType]), float(0),
+            ElitecharactersName, "", False, "", False, "", False, "survivar_ally", True, str(eliteType), float(0),
             float(0), float(0))
             mycursor.execute(sql, val)
 
@@ -93,7 +93,7 @@ for(Armor, BaseDamage, BaseHealth, charactersName, Level, Health_Regen, Class, I
             # other
             sql = "INSERT INTO enemies (charactersName, Family, SB_Flag, MAP_SPAWN_REQUIREMENTS, SM_FLAG, special_spawn_requirements, OM_Flag, survivar_ally, E_flag, Effect, damage_boost, health_boost, Chance_to_drop_buff ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
             val = (
-                EliteOthercharactersName, "", False, "", False, "", True, "survivar_ally", True, str(elite[eliteType]), float(0),
+                EliteOthercharactersName, "", False, "", False, "", True, "survivar_ally", True, str(eliteType), float(0),
                 float(0), float(0))
             mycursor.execute(sql, val)
 

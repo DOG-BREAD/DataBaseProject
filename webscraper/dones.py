@@ -120,7 +120,8 @@ for x in range (0, len(drones)):
     
 
     # 
-
+    if Armor is None:
+        Armor = 0
     
 
     #insert into Drone table with charactersName == nam and charName "Acrid" as default. Will randomize playable characters names for charName
