@@ -1,8 +1,9 @@
 .mainbody{
      background-image: url('https://c4.wallpaperflare.com/wallpaper/387/95/786/risk-of-rain-video-game-art-purple-hd-wallpaper-preview.jpg');
+     background-size: cover;
      background-position: fixed;
-     background-repeat: none;
-
+     height:100%;
+     width: 100%;
 }
 
 .optionsBar{
@@ -57,3 +58,4 @@ li {
     line-height: 1.5;
     color: #fff;
   }
+
