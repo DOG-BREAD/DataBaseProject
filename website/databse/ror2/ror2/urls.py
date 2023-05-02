@@ -19,5 +19,7 @@ from django.urls import path
 from ror2app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('' , views.index)
+    path('items', views.index),
+    path('enemies', views.enemies),
+    path('environment', views.environment)
 ]

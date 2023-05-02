@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f31f7f25-2d27-4be9-81af-559558015ed5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../webscraper/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../../webscraper/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../webscraper/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../webscraper/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f31f7f25-2d27-4be9-81af-559558015ed5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,13 +21,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/theje/Documents/GitHub/DataBaseProject/website/databse/ror2/ror2app/templates"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\theje\Documents\GitHub\DataBaseProject\website\databse\ror2\ror2app\templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\theje\Desktop\databse\ror2\ror2app\static" />
       <recent name="C:\Users\theje\Desktop\databse\ror2\ror2app\templates" />

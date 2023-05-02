@@ -1,16 +1,25 @@
-.mainbody{
+.mainbody {
      background-image: url('https://c4.wallpaperflare.com/wallpaper/387/95/786/risk-of-rain-video-game-art-purple-hd-wallpaper-preview.jpg');
-     background-size: cover;
-     background-position: fixed;
-     height:100%;
-     width: 100%;
+
+     background-position: center;
+     background-size: 500px, 500px;
+
 }
 
-.optionsBar{
+.enemybackground {
+    background-image: url("https://rare-gallery.com/mocahbig/1326991-Risk-Of-Rain-2-HD-Wallpaper.jpg");
+    background-position: center;
+    background-size: 500px, 500px;
+}
+
+body {
+    background-color: #000;
+}
+.optionsBar {
     background-color: #808080;
 }
 
-.topRow{
+.topRow {
     opacity: .5;
 }
 
@@ -28,7 +37,7 @@ li {
   box-sizing: border-box;
 }
 
-.customLi{
+.customLi {
     display: none;
 }
 .container {
