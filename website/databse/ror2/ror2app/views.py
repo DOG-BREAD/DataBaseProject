@@ -13,3 +13,7 @@ def enemies(request):
 def environment(request):
     data = Environment.objects.all()
     return render(request, "enviroment.html", {'data': data})
+
+def home(request):
+
+    return render(request, "home.html" )
